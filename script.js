@@ -2,34 +2,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = document.getElementById("notifyButton");
 
     button.addEventListener("click", () => {
-        // Check the current permission status
+        
         if (Notification.permission === "granted") {
-            // Permission already granted, show the notification
+           
             showNotification();
         } else if (Notification.permission !== "denied") {
-            // Request permission if not already granted or denied
+            
             Notification.requestPermission().then(permission => {
                 if (permission === "granted") {
                     showNotification();
                 } else {
-                    console.log("Notification permission denied.");
+                    console.log("permission denied.");
                 }
             }).catch(error => {
-                console.log("Error requesting notification permission:", error);
+                console.log("Error requesting :", error);
             });
         } else {
-            console.log("Notification permission was denied previously.");
+            console.log("denied");
         }
     });
 
-    // Function to show the notification
+    
     function showNotification() {
-        const notification = new Notification("Example Notification", {
-            body: "This is the notification text",
-            icon: "https://via.placeholder.com/128" // Optional: Add an icon
+        const notification = new Notification("STAY ALERT", {
+            body: "Animal Sighted",
+            icon: "WildEye/assets/images/icon.jpg" 
         });
 
-        // Optional: Add event listeners for the notification
+      
         notification.onclick = () => {
             console.log("Notification clicked!");
         };
